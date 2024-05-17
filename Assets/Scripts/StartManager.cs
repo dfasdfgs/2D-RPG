@@ -77,12 +77,12 @@ public class StartManager : MonoBehaviour
         }
         Invoke("ErrorMassageExit", 3f);
 
-        void Update()
-        {
-            Debug.Log("ID : " + PlayerPrefs.GetString("ID"));
-            Debug.Log("PW : " + PlayerPrefs.GetString("PW"));
-            Debug.Log("FIND : " + PlayerPrefs.GetString("FIND"));
-        }
+    }
 
+    public void Update()
+    {
+        Debug.Log("ID : " + PlayerPrefs.GetString("ID"));
+        Debug.Log("PW : " + PlayerPrefs.GetString("PW"));
+        Debug.Log("FIND : " + PlayerPrefs.GetString("FIND"));
     }
 }
