@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SelectCharacter : MonoBehaviour
@@ -12,14 +12,47 @@ public class SelectCharacter : MonoBehaviour
 
     [Header("Character")]
     public GameObject[] Character;
+    public CharacterInfo[] characterInfos;
     private int charIndex = 0;
+
+    [Header("GameStart")]
+    public GameObject GameStart;
+    public Text GameCountTxt;
+    public bool IsPlayButtonClicked = false;
+    private float gameCount = 5f;
+
+    public static string CharacterName;
+
+    private void Start()
+    {
+        SetPanelInfo();
+    }
+
+    private void Update()
+    {
+        if (IsPlayButtonClicked)
+        {
+            gameCount -= Time.deltaTime;
+            if (gameCount <= 0)
+            {
+                SceneManager.LoadScene("MainScene");
+            }
+            GameCountTxt.text = $"곧 게임이 시작됩니다. \n {gameCount:F1}";
+        }
+    }
+
+    public void PlayBtn()
+    {
+        GameStart.SetActive(true);
+        IsPlayButtonClicked=true;
+        CharacterName = Character[charIndex].name;
+    }
 
     public void SelectCharacterBtn(string btnName)
     {
-
         Character[charIndex].SetActive(false);
 
-        if(btnName == "Next")
+        if (btnName == "Next")
         {
             charIndex++;
             charIndex = charIndex % Character.Length;
@@ -34,5 +67,12 @@ public class SelectCharacter : MonoBehaviour
 
         Debug.Log($"charIndex: {charIndex}");
         Character[charIndex].SetActive(true);
+        SetPanelInfo();
+    }
+    private void SetPanelInfo()
+    {
+        NameTxt.text = characterInfos[charIndex].Name;
+        FeatureTxt.text = characterInfos[charIndex].Feature;
+        CharImage.sprite = Character[charIndex].GetComponent<SpriteRenderer>().sprite;
     }
 }
