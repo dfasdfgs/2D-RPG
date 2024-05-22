@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82498dc42dfe72c4b83a64497e6de608, type: 3}
   m_Name: MageInfo
   m_EditorClassIdentifier: 
-  Name: 
-  Feature: 
+  Name: "\uB9C8\uBC95\uC0AC"
+  Feature: "\uB2E4\uC591\uD55C \uC2A4\uD0AC\uC744 \uAC00\uC9C0\uACE0 \uC788\uC73C\uBA70
+    \uAC15\uB825\uD55C \uACF5\uACA9\uC744 \uC790\uB791\uD55C\uB2E4."
