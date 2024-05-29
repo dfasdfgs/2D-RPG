@@ -1,35 +1,160 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rigidbody2d;
+    private AudioSource audioSource;
+
+    public AudioClip JustClip;
 
     public float Speed = 4f;
+    public float JumpPower = 6f;
+
+    private bool isFloor;
+
+    public GameObject AttackObj;
+    public float AttackSpeed = 3f;
+    public AudioClip AttackCilp;
+
+    private bool justAttack, justJump;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        Nove();
+        Move();
+        AttackCheck();
+        JumpCheck();
     }
 
-    private void Nove()
+
+    private void FixedUpdate()
     {
-        if(Input.GetKey(KeyCode.RightArrow))
+        Jump();
+        Attack();
+    }
+
+
+
+    private void Move()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(Vector3.right * Speed * Time.deltaTime);
+            animator.SetBool("Move", true);
         }
-        else if(Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.left * Speed * Time.deltaTime);
+            animator.SetBool("Move", true);
+        }
+        else
+        {
+            animator.SetBool("Move", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            spriteRenderer.flipX = true;
         }
     }
+
+    private void JumpCheck()
+    {
+        if (isFloor)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                justJump = true;
+            }
+        }
+    }
+
+    private void Jump()
+    {
+        if (justJump)
+        {
+            justJump = false;
+
+            rigidbody2d.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
+            animator.SetTrigger("Jump");
+            audioSource.PlayOneShot(JustClip);
+        }
+    }
+
+    private void AttackCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            justAttack = true;
+        }
+    }
+
+    private void Attack()
+    {
+        if(justAttack)
+        {
+            justAttack = false;
+
+            animator.SetTrigger("Attack");
+            audioSource.PlayOneShot(AttackCilp);
+
+            if (gameObject.name == "Warrior")
+            {
+                AttackObj.SetActive(true);
+                Invoke("SetAttackObjInactive", 0.5f);
+            }
+            else
+            {
+                if (spriteRenderer.flipX)
+                {
+                    GameObject obj = Instantiate(AttackObj, transform.position, Quaternion.Euler(0, 180f, 0));
+                    obj.GetComponent<Rigidbody2D>().AddForce(Vector2.left * AttackSpeed, ForceMode2D.Impulse);
+                    Destroy(obj, 3f);
+                }
+                else
+                {
+                    GameObject obj = Instantiate(AttackObj, transform.position, Quaternion.Euler(0, 0, 0));
+                    obj.GetComponent<Rigidbody2D>().AddForce(Vector2.right * AttackSpeed, ForceMode2D.Impulse);
+                    Destroy(obj, 3f);
+                }
+            }
+        }
+    }
+
+    private void SetAttackObjInactive()
+    {
+        AttackObj.SetActive(false);
+    }
+    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Floor")
+        {
+            isFloor = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Floor")
+        {
+            isFloor = false;
+        }
+    }
+
+   
 }
