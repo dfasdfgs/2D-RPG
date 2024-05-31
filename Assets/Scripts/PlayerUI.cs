@@ -28,6 +28,6 @@ public class PlayerUI : MonoBehaviour
     private void display()
     {
         CharaterImg.sprite = player.GetComponent<SpriteRenderer>().sprite;
-        HpSlider.value = GameManager.Instance.PlayerHP;    
+        HpSlider.value = GameManager.Instance.PlayerHP;
     }
 }

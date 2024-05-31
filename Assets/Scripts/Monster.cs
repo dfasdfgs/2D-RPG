@@ -10,7 +10,8 @@ public class Monster : MonoBehaviour
     private float TurnTime = 0;
     private bool isDie = false;
 
-    private float MoveSpeed = 3f;
+    public float MoveSpeed = 3f;
+    public GameObject[] ItemObj;
 
     private Animator MonsterAnimator;
 
@@ -78,5 +79,13 @@ public class Monster : MonoBehaviour
 
         GetComponent<Collider2D>().enabled = false;
         Destroy(gameObject, 1.5f);
+    }
+    private void OnDestroy()
+    {
+        int itemRandom = Random.Range(0, ItemObj.Length);
+        if (itemRandom < ItemObj.Length)
+        {
+            Instantiate(ItemObj[itemRandom], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+        }
     }
 }
