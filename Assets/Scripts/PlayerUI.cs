@@ -14,6 +14,9 @@ public class PlayerUI : MonoBehaviour
     private GameObject player;
     public GameObject spawnPos;
 
+    public Text CoinCount;
+    public Text MonsterCount;
+
     void Start()
     {
         IdText.text = GameManager.Instance.UserID;
@@ -23,6 +26,8 @@ public class PlayerUI : MonoBehaviour
     void Update()
     {
         display();
+        CoinCount.text = "COIN : " + GameManager.Instance.Coin;
+        //MonsterCount.text = "Mob : " + GameManager.Instance.Monstercount;
     }
 
     private void display()

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class Monster : MonoBehaviour
     public GameObject[] ItemObj;
 
     private Animator MonsterAnimator;
+
 
     void Start()
     {

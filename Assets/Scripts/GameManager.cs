@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     public float PlayerHP = 100f;
     public float PlayerExp = 1f;
     public int Coin = 0;
+    public int Monstercount;
 
+    private GameObject player;
 
 
     private void Awake()
