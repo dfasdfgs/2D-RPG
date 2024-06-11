@@ -309,6 +309,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AttackObj
       objectReference: {fileID: 0}
+    - target: {fileID: 894198857689312585, guid: 4e333cd1f09be2d49b908a255523e04a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157613757655585541, guid: 4e333cd1f09be2d49b908a255523e04a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8356025719463642433, guid: 4e333cd1f09be2d49b908a255523e04a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.0034117699

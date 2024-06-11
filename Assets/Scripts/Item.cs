@@ -22,6 +22,20 @@ public class Item : MonoBehaviour
                 Destroy(gameObject);
 
             }
+            else if (gameObject.tag == "Speed")
+            {
+                GameManager.Instance.PlayerHP += 10;
+                Debug.Log("Player HP : " + GameManager.Instance.PlayerHP);
+                Destroy(gameObject);
+
+            }
+            else if (gameObject.tag == "DamageUp")
+            {
+                GameManager.Instance.PlayerHP += 10;
+                Debug.Log("Player HP : " + GameManager.Instance.PlayerHP);
+                Destroy(gameObject);
+
+            }
         }
     }
 

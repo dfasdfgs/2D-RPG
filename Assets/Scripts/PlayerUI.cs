@@ -16,6 +16,8 @@ public class PlayerUI : MonoBehaviour
 
     public Text CoinCount;
     public Text MonsterCount;
+    public Text speed; 
+    public Text Damage;
 
     void Start()
     {
@@ -27,7 +29,14 @@ public class PlayerUI : MonoBehaviour
     {
         display();
         CoinCount.text = "COIN : " + GameManager.Instance.Coin;
-        //MonsterCount.text = "Mob : " + GameManager.Instance.Monstercount;
+        MonsterCount.text = "Mob : " + GameManager.Instance.monsterCount;
+        speed.text = "Speed : " + Character.Speed;
+
+
+        if (GameManager.Instance.monsterCount == 0)
+        {
+
+        }
     }
 
     private void display()

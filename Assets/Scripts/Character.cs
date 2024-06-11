@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
 
     public AudioClip JustClip;
 
-    public float Speed = 4f;
+    static public float Speed = 4f + GameManager.Instance.PlayerSpeed;
     public float JumpPower = 6f;
 
     private bool isFloor;
@@ -24,11 +24,11 @@ public class Character : MonoBehaviour
     public AudioClip AttackCilp;
 
     private bool justAttack, justJump;
+    private bool faceRight = true;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
     }
@@ -77,25 +77,27 @@ public class Character : MonoBehaviour
         {
             transform.Translate(Vector3.right * Speed * Time.deltaTime);
             animator.SetBool("Move", true);
+            if (!faceRight) Flip();
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.left * Speed * Time.deltaTime);
             animator.SetBool("Move", true);
+            if (faceRight) Flip();
         }
         else
         {
             animator.SetBool("Move", false);
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            spriteRenderer.flipX = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            spriteRenderer.flipX = true;
-        }
+    private void Flip()
+    {
+        faceRight = !faceRight;
+
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
 
     private void JumpCheck()
@@ -140,12 +142,12 @@ public class Character : MonoBehaviour
 
             if (gameObject.name == "Warrior(Clone)")
             {
-                AttackObj.SetActive(true);
+                AttackObj.GetComponent<Collider2D>().enabled = true;
                 Invoke("SetAttackObjInactive", 0.5f);
             }
             else
             {
-                if (spriteRenderer.flipX)
+                if (!faceRight)
                 {
                     GameObject obj = Instantiate(AttackObj, transform.position, Quaternion.Euler(0, 180f, 0));
                     obj.GetComponent<Rigidbody2D>().AddForce(Vector2.left * AttackSpeed, ForceMode2D.Impulse);
@@ -163,7 +165,7 @@ public class Character : MonoBehaviour
 
     private void SetAttackObjInactive()
     {
-        AttackObj.SetActive(false);
+        AttackObj.GetComponent<Collider2D>().enabled = false;
     }
     
 
