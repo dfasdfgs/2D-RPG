@@ -31,8 +31,8 @@ public class Item : MonoBehaviour
             }
             else if (gameObject.tag == "DamageUp")
             {
-                GameManager.Instance.player.GetComponent<Character>().AttackObj.GetComponent<Attack>().AttackDamage += 5;
-                Debug.Log("Player Damage : " + GameManager.Instance.player.GetComponent<Character>().AttackObj.GetComponent<Attack>().AttackDamage);
+                GameManager.Instance.player.GetComponent<Character>().AttackObj.GetComponent<Attack>().AttackDamage += 5f;
+                Debug.Log("Player Damage : " + GetComponent<Character>().AttackObj.GetComponent<Attack>().AttackDamage);
                 Destroy(gameObject);
 
             }

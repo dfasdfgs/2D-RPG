@@ -186,12 +186,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf7fb24e1a731c43a229438856a1fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JustClip: {fileID: 0}
+  JustClip: {fileID: 8300000, guid: 4541fc20d9ccd24469a08406241cd14c, type: 3}
   Speed: 4
   JumpPower: 6
-  AttackObj: {fileID: 0}
+  AttackObj: {fileID: 4782236094713842569, guid: baa2495d803601447be0c6e995d48286, type: 3}
   AttackSpeed: 3
-  AttackCilp: {fileID: 0}
+  AttackCilp: {fileID: 8300000, guid: 4541fc20d9ccd24469a08406241cd14c, type: 3}
 --- !u!95 &263919917379792450
 Animator:
   serializedVersion: 5

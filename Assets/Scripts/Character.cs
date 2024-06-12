@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
     private Rigidbody2D rigidbody2d;
     private AudioSource audioSource;
 
-    public AudioClip JustClip;
+    public AudioClip JumpClip;
 
     public float Speed = 4;
     public float JumpPower = 6f;
@@ -119,7 +119,7 @@ public class Character : MonoBehaviour
 
             rigidbody2d.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
             animator.SetTrigger("Jump");
-            audioSource.PlayOneShot(JustClip);
+            audioSource.PlayOneShot(JumpClip);
         }
     }
 
@@ -138,9 +138,8 @@ public class Character : MonoBehaviour
             justAttack = false;
 
             animator.SetTrigger("Attack");
-            audioSource.PlayOneShot(AttackCilp);
 
-            if (gameObject.name == "Warrior(Clone)")
+            if (gameObject.name == "ManWarrior(Clone)")
             {
                 AttackObj.GetComponent<Collider2D>().enabled = true;
                 Invoke("SetAttackObjInactive", 0.5f);
