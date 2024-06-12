@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject SpawnPlayer(Transform spawnPos)
     {
-        GameObject playerPrefab = Resources.Load<GameObject>("Characters/" + SelectecPlayer.ToString());
+        GameObject playerPrefab = Resources.Load<GameObject>("NewChar/" + SelectecPlayer.ToString());
         GameObject player = Instantiate(playerPrefab, spawnPos.position, spawnPos.rotation);
 
         return player;
