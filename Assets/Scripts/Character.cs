@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
 
     public AudioClip JustClip;
 
-    static public float Speed = 4f + GameManager.Instance.PlayerSpeed;
+    public float Speed = 4;
     public float JumpPower = 6f;
 
     private bool isFloor;
@@ -38,7 +38,7 @@ public class Character : MonoBehaviour
         Move();
         AttackCheck();
         JumpCheck();
-        ClimbingChack(); 
+        ClimbingChack();
     }
 
     private void ClimbingChack()

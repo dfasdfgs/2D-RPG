@@ -11,13 +11,11 @@ public class GameManager : MonoBehaviour
 
     public float PlayerHP = 100f;
     public float PlayerExp = 1f;
-    public float PlayerSpeed = 0f;
-    public float Playerdamage = 0f;
     public int Coin = 0;
 
     public int monsterCount;
 
-    private GameObject player;
+    public GameObject player;
 
 
     private void Awake()

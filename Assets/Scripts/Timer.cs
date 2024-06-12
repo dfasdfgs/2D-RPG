@@ -1,16 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
+    float sec;
+    int Min;
+ 
+    [SerializeField] 
+    public Text timetext;
 
-    void Update()
+    private void Update()
     {
-        
+
+
+        sec += Time.deltaTime;
+        timetext.text = string.Format("{0:D2}Ка {1:D2}УЪ", Min, (int)sec);
+
+        if ((int)sec > 59)
+        {
+            sec = 0; 
+            Min++;
+
+        }
+
+
+
+
     }
 }

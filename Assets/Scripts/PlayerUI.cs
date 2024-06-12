@@ -30,7 +30,8 @@ public class PlayerUI : MonoBehaviour
         display();
         CoinCount.text = "COIN : " + GameManager.Instance.Coin;
         MonsterCount.text = "Mob : " + GameManager.Instance.monsterCount;
-        speed.text = "Speed : " + Character.Speed;
+        speed.text = "Speed : " + GameManager.Instance.player.GetComponent<Character>().Speed;
+        Damage.text = "Damage : " + GameManager.Instance.player.GetComponent<Character>().AttackObj.GetComponent<Attack>().AttackDamage;
 
 
         if (GameManager.Instance.monsterCount == 0)
