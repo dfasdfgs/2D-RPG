@@ -14,14 +14,15 @@ public class Monster : MonoBehaviour
     public GameObject[] ItemObj;
 
     private Animator MonsterAnimator;
-    CameraShake camera;
+
+
 
 
     void Start()
     {
         MonsterAnimator =  this.GetComponent<Animator>();
         GameManager.Instance.monsterCount++;
-        camera = GameObject.FindWithTag("MainCamera").GetComponent<CameraShake>();
+ 
     }
 
 
@@ -59,8 +60,6 @@ public class Monster : MonoBehaviour
             GameManager.Instance.PlayerHP -= MonsterDamage;
 
             Debug.Log("PlayerHP :" + GameManager.Instance.PlayerHP);
-
-            camera.VibrateForTime(0.1f);
         }
 
         if(collision.gameObject.tag == "Attack")

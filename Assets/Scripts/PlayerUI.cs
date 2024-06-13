@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
@@ -19,10 +20,14 @@ public class PlayerUI : MonoBehaviour
     public Text speed; 
     public Text Damage;
 
+    public GameObject GameClear;
+    public float gameCount = 2f;
+
     void Start()
     {
         IdText.text = GameManager.Instance.UserID;
         player = GameManager.Instance.SpawnPlayer(spawnPos.transform);
+
     }
 
     void Update()
@@ -34,9 +39,16 @@ public class PlayerUI : MonoBehaviour
         Damage.text = "Damage : " + GameManager.Instance.player.GetComponent<Character>().AttackObj.GetComponent<Attack>().AttackDamage;
 
 
+
         if (GameManager.Instance.monsterCount == 0)
         {
+            GameClear.SetActive(true);
 
+            gameCount -= Time.deltaTime;
+            if (gameCount <= 0)
+            {
+                SceneManager.LoadScene("ExitScene");
+            }
         }
     }
 

@@ -7,7 +7,7 @@ public class SelectScene : MonoBehaviour
 {
     public Text IdText;
 
-    void Start()
+    void Update()
     {
         IdText.text = "ID : " + GameManager.Instance.UserID;
     }
