@@ -739,8 +739,6 @@ MonoBehaviour:
   ItemObj:
   - {fileID: 3027259457573786630, guid: e4823027aaac42a449a5ef5f3c21110a, type: 3}
   - {fileID: 6309286930235605138, guid: 7ef2ba2471099fd4a9f2cac9101d62e4, type: 3}
-  - {fileID: 7345670272229333325, guid: 3a4028970bb051b4e84c95035ebe3525, type: 3}
-  - {fileID: 7680417152764463868, guid: ab15669f9b6d1124ba99ada1e6dc1e7f, type: 3}
 --- !u!95 &222027613
 Animator:
   serializedVersion: 5
@@ -3655,8 +3653,6 @@ MonoBehaviour:
   ItemObj:
   - {fileID: 3027259457573786630, guid: e4823027aaac42a449a5ef5f3c21110a, type: 3}
   - {fileID: 6309286930235605138, guid: 7ef2ba2471099fd4a9f2cac9101d62e4, type: 3}
-  - {fileID: 7345670272229333325, guid: 3a4028970bb051b4e84c95035ebe3525, type: 3}
-  - {fileID: 7680417152764463868, guid: ab15669f9b6d1124ba99ada1e6dc1e7f, type: 3}
 --- !u!95 &489192248
 Animator:
   serializedVersion: 5
@@ -5868,7 +5864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1344700142
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6470,8 +6466,6 @@ MonoBehaviour:
   ItemObj:
   - {fileID: 3027259457573786630, guid: e4823027aaac42a449a5ef5f3c21110a, type: 3}
   - {fileID: 6309286930235605138, guid: 7ef2ba2471099fd4a9f2cac9101d62e4, type: 3}
-  - {fileID: 7345670272229333325, guid: 3a4028970bb051b4e84c95035ebe3525, type: 3}
-  - {fileID: 7680417152764463868, guid: ab15669f9b6d1124ba99ada1e6dc1e7f, type: 3}
 --- !u!95 &1535075009
 Animator:
   serializedVersion: 5
@@ -7261,8 +7255,6 @@ MonoBehaviour:
   ItemObj:
   - {fileID: 3027259457573786630, guid: e4823027aaac42a449a5ef5f3c21110a, type: 3}
   - {fileID: 6309286930235605138, guid: 7ef2ba2471099fd4a9f2cac9101d62e4, type: 3}
-  - {fileID: 7345670272229333325, guid: 3a4028970bb051b4e84c95035ebe3525, type: 3}
-  - {fileID: 7680417152764463868, guid: ab15669f9b6d1124ba99ada1e6dc1e7f, type: 3}
 --- !u!95 &1920247421
 Animator:
   serializedVersion: 5
@@ -7435,8 +7427,6 @@ MonoBehaviour:
   ItemObj:
   - {fileID: 3027259457573786630, guid: e4823027aaac42a449a5ef5f3c21110a, type: 3}
   - {fileID: 6309286930235605138, guid: 7ef2ba2471099fd4a9f2cac9101d62e4, type: 3}
-  - {fileID: 7345670272229333325, guid: 3a4028970bb051b4e84c95035ebe3525, type: 3}
-  - {fileID: 7680417152764463868, guid: ab15669f9b6d1124ba99ada1e6dc1e7f, type: 3}
 --- !u!95 &1989431751
 Animator:
   serializedVersion: 5
@@ -7733,7 +7723,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2026676709
 RectTransform:
   m_ObjectHideFlags: 0
