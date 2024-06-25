@@ -4,18 +4,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    //public string CharacterName;
-
-    public Define.Player SelectecPlayer;
+    public string CharacterName;
     public string UserID;
 
     public float PlayerHP = 100f;
     public float PlayerExp = 1f;
     public int Coin = 0;
 
-    public int monsterCount;
-
-    public GameObject player;
 
 
     private void Awake()
@@ -40,14 +35,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject SpawnPlayer(Transform spawnPos)
     {
-        GameObject playerPrefab = Resources.Load<GameObject>("NewChar/" + SelectecPlayer.ToString());
+        GameObject playerPrefab = Resources.Load<GameObject>("Characters/" + CharacterName);
         GameObject player = Instantiate(playerPrefab, spawnPos.position, spawnPos.rotation);
 
         return player;
-    }
-
-    private void Update()
-    {
-
     }
 }

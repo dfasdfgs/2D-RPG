@@ -15,24 +15,10 @@ public class Item : MonoBehaviour
                 Debug.Log("Player Coin : " + GameManager.Instance.Coin);
                 Destroy(gameObject);
             }
-            if(gameObject.tag == "HP")
+            else if(gameObject.tag == "HP")
             {
                 GameManager.Instance.PlayerHP += 10;
                 Debug.Log("Player HP : " + GameManager.Instance.PlayerHP);
-                Destroy(gameObject);
-
-            }
-            if (gameObject.tag == "Speed")
-            {
-                GameManager.Instance.player.GetComponent<Character>().Speed += 10;
-                Debug.Log("Player Speed : " + GameManager.Instance.player.GetComponent<Character>().Speed);
-                Destroy(gameObject);
-
-            }
-            if (gameObject.tag == "DamageUp")
-            {
-                GameManager.Instance.player.GetComponent<Character>().AttackObj.GetComponent<Attack>().AttackDamage += 5f;
-                Debug.Log("Player Damage : " + GetComponent<Character>().AttackObj.GetComponent<Attack>().AttackDamage);
                 Destroy(gameObject);
 
             }

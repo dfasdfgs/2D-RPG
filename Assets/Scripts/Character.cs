@@ -8,9 +8,9 @@ public class Character : MonoBehaviour
     private Rigidbody2D rigidbody2d;
     private AudioSource audioSource;
 
-    public AudioClip JumpClip;
+    public AudioClip JustClip;
 
-    public float Speed = 4;
+    public float Speed = 4f;
     public float JumpPower = 6f;
 
     private bool isFloor;
@@ -24,11 +24,11 @@ public class Character : MonoBehaviour
     public AudioClip AttackCilp;
 
     private bool justAttack, justJump;
-    private bool faceRight = true;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
     }
@@ -38,7 +38,7 @@ public class Character : MonoBehaviour
         Move();
         AttackCheck();
         JumpCheck();
-        ClimbingChack();
+        ClimbingChack(); 
     }
 
     private void ClimbingChack()
@@ -77,27 +77,25 @@ public class Character : MonoBehaviour
         {
             transform.Translate(Vector3.right * Speed * Time.deltaTime);
             animator.SetBool("Move", true);
-            if (!faceRight) Flip();
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.left * Speed * Time.deltaTime);
             animator.SetBool("Move", true);
-            if (faceRight) Flip();
         }
         else
         {
             animator.SetBool("Move", false);
         }
-    }
 
-    private void Flip()
-    {
-        faceRight = !faceRight;
-
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     private void JumpCheck()
@@ -119,7 +117,7 @@ public class Character : MonoBehaviour
 
             rigidbody2d.AddForce(Vector2.up * JumpPower, ForceMode2D.Impulse);
             animator.SetTrigger("Jump");
-            audioSource.PlayOneShot(JumpClip);
+            audioSource.PlayOneShot(JustClip);
         }
     }
 
@@ -138,15 +136,16 @@ public class Character : MonoBehaviour
             justAttack = false;
 
             animator.SetTrigger("Attack");
+            audioSource.PlayOneShot(AttackCilp);
 
-            if (gameObject.name == "ManWarrior(Clone)")
+            if (gameObject.name == "Warrior(Clone)")
             {
-                AttackObj.GetComponent<Collider2D>().enabled = true;
+                AttackObj.SetActive(true);
                 Invoke("SetAttackObjInactive", 0.5f);
             }
             else
             {
-                if (!faceRight)
+                if (spriteRenderer.flipX)
                 {
                     GameObject obj = Instantiate(AttackObj, transform.position, Quaternion.Euler(0, 180f, 0));
                     obj.GetComponent<Rigidbody2D>().AddForce(Vector2.left * AttackSpeed, ForceMode2D.Impulse);
@@ -164,7 +163,7 @@ public class Character : MonoBehaviour
 
     private void SetAttackObjInactive()
     {
-        AttackObj.GetComponent<Collider2D>().enabled = false;
+        AttackObj.SetActive(false);
     }
     
 

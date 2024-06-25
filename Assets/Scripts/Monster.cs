@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
@@ -15,14 +15,9 @@ public class Monster : MonoBehaviour
 
     private Animator MonsterAnimator;
 
-
-
-
     void Start()
     {
         MonsterAnimator =  this.GetComponent<Animator>();
-        GameManager.Instance.monsterCount++;
- 
     }
 
 
@@ -83,17 +78,14 @@ public class Monster : MonoBehaviour
         GameManager.Instance.PlayerExp += MonsterExp;
 
         GetComponent<Collider2D>().enabled = false;
-        Invoke("CreateItem", 1.5f);
-
-        GameManager.Instance.monsterCount--;
+        Destroy(gameObject, 1.5f);
     }
-    private void CreateItem()
+    private void OnDestroy()
     {
         int itemRandom = Random.Range(0, ItemObj.Length);
         if (itemRandom < ItemObj.Length)
         {
             Instantiate(ItemObj[itemRandom], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
         }
-        Destroy(gameObject);
     }
 }
