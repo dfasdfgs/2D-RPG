@@ -6,7 +6,8 @@ public class Define
 {
     public enum Player
     {
-        EvilMage,
-        ManWarrior
+        Warrior,
+        Archer,
+        Mage
     }
 }
