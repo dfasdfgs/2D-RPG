@@ -13,6 +13,7 @@ public class StoreManager : MonoBehaviour
     public Text ItemExplainText;
 
     private Dictionary<string, InventoryItemDate> itemDictionary;
+    public string SelectedItemID;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class StoreManager : MonoBehaviour
         }
     }
 
+  
     public void SelectItem(string itemID)
     {
         if (itemDictionary.TryGetValue(itemID, out InventoryItemDate selectdItem))
@@ -32,10 +34,33 @@ public class StoreManager : MonoBehaviour
             ItemNameText.text = selectdItem.itemName;
             ItemCoinText.text = $"({selectdItem.itemprice:N0} Point)";
             ItemExplainText.text = selectdItem.itemDescription;
+
+            SelectedItemID = itemID;
         }
         else
         {
             Debug.LogError("Item ID not found: " + itemID);
+        }
+    }
+
+    public void Purchase()
+    {
+        InventoryItemDate selectedItem = itemDictionary[SelectedItemID];
+        if (GameManager.Instance.Coin >= selectedItem.itemprice)
+        {
+            if (BackPackManager.Instance.AddItem(selectedItem))
+            {
+                GameManager.Instance.Coin -= selectedItem.itemprice;
+                Debug.Log("성공");
+            }
+            else
+            {
+                Debug.Log("인벤토리에 빈 공간이 없습니다.");
+            }
+        }
+        else
+        {
+            Debug.Log($"잔액이 부족합니다. 잔액 : {GameManager.Instance.Coin}");
         }
     }
 }
