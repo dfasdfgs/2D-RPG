@@ -3390,7 +3390,8 @@ Transform:
   m_LocalPosition: {x: -1201.1824, y: -632.1947, z: 5.58995}
   m_LocalScale: {x: 8.338365, y: 8.338365, z: 8.338365}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 738340681}
   m_Father: {fileID: 2049999213}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &360331283
@@ -6264,11 +6265,11 @@ Transform:
   m_GameObject: {fileID: 738340679}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1186.5602, y: -637.4481, z: 5.58995}
-  m_LocalScale: {x: 13.730316, y: 13.730316, z: 13.730316}
+  m_LocalPosition: {x: 1.7536042, y: -0.63002974, z: 0}
+  m_LocalScale: {x: 1.6466436, y: 1.6466436, z: 1.6466436}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2049999213}
+  m_Father: {fileID: 360326219}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &811345502
 GameObject:
@@ -7847,14 +7848,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04f6ddfd984073409b036cf49f78b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectPlayer: 0
-  UserID: 
-  PlayerHP: 100
-  PlayerMP: 100
-  PlayerExp: 1
-  Player: 1
-  PlayerDef: 1
-  Coin: 1000000
+  SelectPlayer: 1
+  UserID: test
+  PlayerStat:
+    HP: 100
+    MP: 100
+    Exp: 100
+    Def: 1
+    Level: 1
+    Coin: 0
   player: {fileID: 0}
 --- !u!4 &1112592112
 Transform:
@@ -12655,7 +12657,6 @@ Transform:
   - {fileID: 523807246}
   - {fileID: 574075350}
   - {fileID: 360326219}
-  - {fileID: 738340681}
   - {fileID: 1551419267}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

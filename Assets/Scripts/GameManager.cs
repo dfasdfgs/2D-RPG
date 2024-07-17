@@ -1,21 +1,25 @@
 using UnityEngine;
-using static Define;
+
+[System.Serializable]
+public class CharacterStat
+{ 
+    public float HP = 100f;
+    public float MP = 100f;
+    public float Exp = 100f;
+    public float Def = 1f;
+    public int Level = 1;
+    public int Coin = 0;
+}
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     //public string CharacterName;
-    public Player SelectPlayer;
+    public Define.Player SelectPlayer;
     public string UserID;
-
-    public float PlayerHP = 100f;
-    public float PlayerMP = 100f;
-    public float PlayerExp = 100f;
-    public float Player = 1f;
-    public float PlayerDef = 1f;
-    public int Coin = 0;
-
+    public CharacterStat PlayerStat = new CharacterStat();
+    [HideInInspector]
     public GameObject player;
 
     public Character Character

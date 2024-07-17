@@ -46,11 +46,11 @@ public class StoreManager : MonoBehaviour
     public void Purchase()
     {
         InventoryItemData selectedItem = itemDictionary[SelectedItemID];
-        if (GameManager.Instance.Coin >= selectedItem.itemprice)
+        if (GameManager.Instance.PlayerStat.HP >= selectedItem.itemprice)
         {
             if (BackPackManager.Instance.AddItem(selectedItem))
             {
-                GameManager.Instance.Coin -= selectedItem.itemprice;
+                GameManager.Instance.PlayerStat.HP -= selectedItem.itemprice;
                 PopupMsgManager.Instance.ShowPopupMessage("성공");
             }
             else
@@ -60,7 +60,7 @@ public class StoreManager : MonoBehaviour
         }
         else
         {
-            PopupMsgManager.Instance.ShowPopupMessage($"잔액이 부족합니다. 잔액 : {GameManager.Instance.Coin}");
+            PopupMsgManager.Instance.ShowPopupMessage($"잔액이 부족합니다. 잔액 : {GameManager.Instance.PlayerStat.HP}");
         }
     }
 }

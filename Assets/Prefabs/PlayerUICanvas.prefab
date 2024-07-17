@@ -1365,8 +1365,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharaterImg: {fileID: 1605329001721715189}
   IdText: {fileID: 1368877420527442412}
+  LvText: {fileID: 8903736507662707930}
   HpSlider: {fileID: 618864232949868820}
-  spawnPos: {fileID: 0}
+  MpSlider: {fileID: 0}
+  ExpSlider: {fileID: 0}
 --- !u!1 &6992655808428615324
 GameObject:
   m_ObjectHideFlags: 0
