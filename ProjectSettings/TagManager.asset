@@ -9,6 +9,7 @@ TagManager:
   - Attack
   - Coin
   - HP
+  - spawnPos
   layers:
   - Default
   - TransparentFX

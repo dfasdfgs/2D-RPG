@@ -10,10 +10,22 @@ public class GameManager : MonoBehaviour
     public string UserID;
 
     public float PlayerHP = 100f;
-    public float PlayerExp = 1f;
+    public float PlayerMP = 100f;
+    public float PlayerExp = 100f;
+    public float Player = 1f;
+    public float PlayerDef = 1f;
     public int Coin = 0;
 
     public GameObject player;
+
+    public Character Character
+    {
+        get { return player.GetComponent<Character>(); }
+    }
+    public Attack CharacterAttack
+    {
+        get { return Character.AttackObj.GetComponent<Attack>(); }
+    }
 
     private void Awake()
     {

@@ -7,7 +7,7 @@ public class StoreUI : MonoBehaviour
 {
     public Image[] ItemImages;
     public Text[] ItemTexts;
-    public InventoryItemDate[] ItemDatas;
+    public InventoryItemData[] ItemDatas;
     void Start()
     {
         for (int i = 0; i < ItemImages.Length; i++)

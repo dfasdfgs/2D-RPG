@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class StoreManager : MonoBehaviour
 {
-    public InventoryItemDate[] items;
+    public InventoryItemData[] items;
     public GameObject Purchase_UI;
     public Image ItemImage;
     public Text ItemNameText;
     public Text ItemCoinText;
     public Text ItemExplainText;
 
-    private Dictionary<string, InventoryItemDate> itemDictionary;
+    private Dictionary<string, InventoryItemData> itemDictionary;
     public string SelectedItemID;
 
     void Start()
     {
-        itemDictionary = new Dictionary<string, InventoryItemDate>();
-        foreach (InventoryItemDate item in items)
+        itemDictionary = new Dictionary<string, InventoryItemData>();
+        foreach (InventoryItemData item in items)
         {
             itemDictionary[item.itemID] = item;
         }
@@ -27,7 +27,7 @@ public class StoreManager : MonoBehaviour
   
     public void SelectItem(string itemID)
     {
-        if (itemDictionary.TryGetValue(itemID, out InventoryItemDate selectdItem))
+        if (itemDictionary.TryGetValue(itemID, out InventoryItemData selectdItem))
         {
             Purchase_UI.SetActive(true);
             ItemImage.sprite = selectdItem.itemImage;
@@ -45,22 +45,22 @@ public class StoreManager : MonoBehaviour
 
     public void Purchase()
     {
-        InventoryItemDate selectedItem = itemDictionary[SelectedItemID];
+        InventoryItemData selectedItem = itemDictionary[SelectedItemID];
         if (GameManager.Instance.Coin >= selectedItem.itemprice)
         {
             if (BackPackManager.Instance.AddItem(selectedItem))
             {
                 GameManager.Instance.Coin -= selectedItem.itemprice;
-                Debug.Log("성공");
+                PopupMsgManager.Instance.ShowPopupMessage("성공");
             }
             else
             {
-                Debug.Log("인벤토리에 빈 공간이 없습니다.");
+                PopupMsgManager.Instance.ShowPopupMessage("인벤토리에 빈 공간이 없습니다.");
             }
         }
         else
         {
-            Debug.Log($"잔액이 부족합니다. 잔액 : {GameManager.Instance.Coin}");
+            PopupMsgManager.Instance.ShowPopupMessage($"잔액이 부족합니다. 잔액 : {GameManager.Instance.Coin}");
         }
     }
 }
