@@ -4,7 +4,6 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     private Animator animator;
-    private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody2d;
     private AudioSource audioSource;
 
@@ -29,7 +28,6 @@ public class Character : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
     }
@@ -130,6 +128,11 @@ public class Character : MonoBehaviour
         {
             justAttack = true;
         }
+    }
+
+    public void AttackAnimation()
+    {
+        animator.SetTrigger("Attack");
     }
 
     private void Attack()

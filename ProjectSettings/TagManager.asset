@@ -10,6 +10,8 @@ TagManager:
   - Coin
   - HP
   - spawnPos
+  - TAZOFX
+  - Skill
   layers:
   - Default
   - TransparentFX
